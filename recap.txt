@@ -58,4 +58,21 @@ script:
 	=> Travis comprend le changement et redémarre un nouveau build normalement
 
 
+-----PULL REQUEST PROBLEMATIC----
+		EN LOCAL
+La commande "git pull" permet de rapattrier en local les modifications qui ont été apportées à un repo distant.
+Ex : les collègues ont fait des modifs sur un projet, qu'ils ont pushées sur le repository (sur la branche master). 
+Or, on a besoin de ces modifs pour faire avancer notre propre implémentation (qui se fait alors en local).
+Donc : on veut rapatrier tout ce que les collègues ont fait, pour voir leur code, comment il peut s'intégrer ou non au notre,
+apporter des commentaires. 
+Pour cela : dans notre projet en local => "git bash here" => "git pull origin master"
+		SUR REPOSITORY DISTANT (github par exemple)
+On veut apporter une modification au code d'un repository étranger sur github. 
+Pb: nous n'avons pas les droits pour modifier ces documents.
+Donc : on va sur le fichier qu'on veut modifier, clic sur le petit crayon => "propose file change" => "create pull request"
+Il s'agit d'une requête pull parce qu'on veut que le propriétaire du repository rapatrie le code qu'on lui propose.
+=> Le propriétaire du repository reçoit une notification lui disant qu'un utilisateur veut modifier un de ses fichiers. Il accepte ou non.
+Il accepte ou non ces changements.
+
+
 	
