@@ -1,0 +1,29 @@
+--- créer un repository sur github pour le programme ---
+	=> aller sur github => créer repository
+	=> en local : aller dans l'emplacement du dossier qu'on veut envoyer sur github
+	=> clic droit "git bash here"
+	=> c'est parti pour les commandes git : elles sont toutes dispo sur la doc github :
+		git init / git add . / git commit -m "first commit" / 
+		git remote add origin https://github.com/NOMCOMPTEGITHUB/NOMREPOSITORY.git
+		git push -u origin master
+	=> aller sur github dans le repository en question, actualiser la page et vérifier que les fichiers ont bien été envoyés
+ATTENTION : si en local vous faites des modifications sur vos fichiers, et que vous voulez que le repository les prenne en compte,
+il faut impérativement commiter ces modification :
+	=> toujours dans l'emplacement du dossier en local "git bash here"
+	=> git add . / git commit -m "nouveau commit" / git push
+
+--- créer un Job Jenkins pour exécuter la fonction ---
+	=> Jenkins est sur localhost:8080
+	=> "Nouveau Item" => entrer un nom de job => cliquer "construire un projet free-style"
+	=> une page de configuration générale s'ouvre : aller dans "gestion de code source" =>
+	sélectionner "Git" et copier-coller l'url de votre repo github (attention, il faut que l'url pointe
+	bien vers votre repo, et pas sur un autre repo, ou une autre page de votre github)
+	=> descendre vers "Build" => "Ajouter une étape au build" => "Python Builder"
+	=> dans l'encart de script, écrire la commande d'exécution du fichier test :
+		- python test.py
+		ou:
+		- python -m unittest test.py
+Cela veut dire que lors du build, Jenkins va se concentrer sur l'exécution du script de test.
+L'ajout de "-m unittest" signifie que vous appelez directement le module "unittest". (à préciser)
+	=> "Sauver"
+	=>
