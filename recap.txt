@@ -12,6 +12,8 @@ il faut impérativement commiter ces modification :
 	=> toujours dans l'emplacement du dossier en local "git bash here"
 	=> git add . / git commit -m "nouveau commit" / git push
 
+
+
 --- créer un Job Jenkins pour exécuter la fonction ---
 	=> Jenkins est sur localhost:8080
 	=> "Nouveau Item" => entrer un nom de job => cliquer "construire un projet free-style"
@@ -26,4 +28,34 @@ il faut impérativement commiter ces modification :
 Cela veut dire que lors du build, Jenkins va se concentrer sur l'exécution du script de test.
 L'ajout de "-m unittest" signifie que vous appelez directement le module "unittest". (à préciser)
 	=> "Sauver"
-	=>
+	=> Cliquer sur "Lancer un build" => Le process de build se voit dans "Historique des builds"
+	=> A la fin du build, cliquer sur la petite boule rouge ou bleue puis sur "Console Output"
+La "console output" détaille le processus du build, montre si les tests ont échoué ou non, etc.
+Si le build fail, la console output permet de voir où se situe l'erreur.
+
+--- créer un build sur Travis CI ---
+	=> aller sur son compte travis relié au compte github
+	=> en haut à droite, cliquer sur la petite flèche => "settings"
+	=> la page qui s'ouvre liste les repositories github reliés à Travis => cliquer sur le bouton "sync"
+	=> rafraîchir la page pour voir le nouveau repository apparaître dans la liste
+	=> activer le nouveau repository en "cochant" la flèche en bleu
+	=> cliquer sur "More Options" => "Trigger Build" => "Trigger custom build"
+ATTENTION POUR BUILDER SUR TRAVIS IL FAUT AJOUTER A VOTRE DOSSIER/REPO UN FCHIER DE CONFIG
+Le fichier de config est en langage YAML, dont le fonctionnement repose entre autres sur l'INDENTATION
+	=> dans le repo, créer un fichier ".travis.yml"
+Exemple de fichier .travis.yml:
+-----------------------------------------
+language: python
+
+python:
+ - 3.6
+ - 2.7
+  
+script:
+ - python test.py 
+----------------------------------------
+	=> Dans le repository github => "create new file", copier ce type de document, "commit changes"
+	=> Travis comprend le changement et redémarre un nouveau build normalement
+
+
+	
